@@ -1,0 +1,17 @@
+@if (authService.currentUserSig() == null) {
+  <div>
+    <button (click)="signInWithGoogle()">Sign-in with google</button>
+  </div>
+}
+
+@if (authService.currentUserSig()) {
+  <h3>Hello {{ this.authService.currentUserSig()?.email }}</h3>
+  <div>
+    <button (click)="verifyUser()" style="cursor: pointer; color: blue;">Verify User</button>
+  </div>
+  <div>
+    <span (click)="logout()" style="cursor: pointer; color: blue;">Logout</span>
+  </div>
+}
+
+<router-outlet></router-outlet>
